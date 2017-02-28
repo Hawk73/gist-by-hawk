@@ -51,6 +51,11 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'annotate', '~> 2.6'
+  gem 'factory_girl_rails', '~> 4.8'
+end
+
+group :test do
+  gem 'capybara', '~> 2.12'
 end
 
 group :development do
