@@ -1,5 +1,8 @@
 class Snippet < ApplicationRecord
   belongs_to :user
+  validates_presence_of :user
+
+  validates :name, presence: { allow_blank: false }
 end
 
 # == Schema Information
