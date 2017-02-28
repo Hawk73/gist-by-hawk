@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228180728) do
+ActiveRecord::Schema.define(version: 20170228201850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "snippets", force: :cascade do |t|
+    t.integer  "user_id",                 null: false
+    t.string   "name",                    null: false
+    t.text     "text"
+    t.jsonb    "settings",   default: {}
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["user_id"], name: "index_snippets_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
