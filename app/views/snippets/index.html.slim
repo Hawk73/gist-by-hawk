@@ -1,5 +1,8 @@
 - @title = "Snippets"
 
+.flickr_pagination
+  = will_paginate @snippets, container: false
+
 .table-responsive
   table.table.table-striped
     thead
@@ -16,3 +19,6 @@
             = link_to snippet.name, snippet_path(snippet)
           td
             = snippet.user.email
+
+.flickr_pagination
+  = will_paginate @snippets, container: false

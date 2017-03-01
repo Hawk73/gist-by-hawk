@@ -2,8 +2,7 @@ class SnippetsController < ApplicationController
   prepend_before_filter :require_login!
 
   def index
-    # TODO: add pagination
-    @snippets = Snippet.all
+    @snippets = Snippet.paginate(page: params[:page], per_page: 10).order('id DESC')
   end
 
   def new
