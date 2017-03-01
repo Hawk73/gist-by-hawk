@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :snippets do
+  factory :snippet do
     sequence(:name) { |n| "name_#{n}" }
     sequence(:text) { |n| "text_#{n}" }
 
@@ -21,5 +21,6 @@ end
 #
 # Indexes
 #
+#  index_snippets_on_name     (name) UNIQUE
 #  index_snippets_on_user_id  (user_id)
 #

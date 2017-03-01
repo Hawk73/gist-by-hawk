@@ -5,9 +5,9 @@ RSpec.describe 'Auth', type: :feature do
     given!(:user) { create(:user, password: password) }
     given(:password) { 'password' }
 
-    scenario 'Signing in with correct credentials' do
-      visit '/auth/sign_in'
+    background { visit '/auth/sign_in' }
 
+    scenario 'Signing in with correct credentials' do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: password
       click_button 'Log in'
@@ -17,8 +17,6 @@ RSpec.describe 'Auth', type: :feature do
     end
 
     scenario 'Signing in with wrong credentials' do
-      visit '/auth/sign_in'
-
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'invalid password'
       click_button 'Log in'

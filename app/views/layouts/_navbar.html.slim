@@ -7,13 +7,10 @@ nav.navbar.navbar-toggleable-md.navbar-inverse.fixed-top.bg-inverse
       /TODO: set active by current path
       li.nav-item.active
         = link_to "Home", root_path, class: "nav-link"
-
-      li.nav-item.dropdown
-        a#dropdown01.nav-link.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown"
-          | Snippets
-        .dropdown-menu aria-labelledby="dropdown01"
-          = link_to "Index", snippets_path, class: "dropdown-item"
-          = link_to "Create", new_snippet_path, class: "dropdown-item"
+      li.nav-item
+        = link_to "View snipets", snippets_path, class: "nav-link"
+      li.nav-item
+        = link_to "Create snipet", new_snippet_path, class: "nav-link"
 
       - if signed_in?
         li.nav-item

@@ -18,5 +18,6 @@ end
 #
 # Indexes
 #
+#  index_snippets_on_name     (name) UNIQUE
 #  index_snippets_on_user_id  (user_id)
 #

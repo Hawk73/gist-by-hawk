@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def require_login!
+    redirect_to(new_user_session_url) and return false unless current_user
+    true
+  end
+
   # TODO: enable if it need
   # before_action :configure_permitted_parameters, if: :devise_controller?
 

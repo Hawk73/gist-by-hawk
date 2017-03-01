@@ -1,2 +1,19 @@
 h2
   | Snippets
+
+.table-responsive
+  table.table.table-striped
+    thead
+      tr
+        th #
+        th Name
+        th User ID
+    tbody
+      - @snippets.each do |snippet|
+        tr
+          td
+            = snippet.id
+          td
+            = snippet.name
+          td
+            = snippet.user.id

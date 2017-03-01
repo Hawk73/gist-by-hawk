@@ -2,7 +2,7 @@ class Snippet < ApplicationRecord
   belongs_to :user
   validates_presence_of :user
 
-  validates :name, presence: { allow_blank: false }
+  validates :name, presence: { allow_blank: false }, uniqueness: true
 end
 
 # == Schema Information
@@ -19,5 +19,6 @@ end
 #
 # Indexes
 #
+#  index_snippets_on_name     (name) UNIQUE
 #  index_snippets_on_user_id  (user_id)
 #
