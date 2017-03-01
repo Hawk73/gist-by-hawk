@@ -6,3 +6,12 @@
   .panel-body
     pre
       | #{@snippet.text}
+
+hr
+
+/ TODO: add pagination
+= render partial: 'comments/comments', locals: {comments: @snippet.comments}
+
+hr
+
+= render "comments/add_comment"

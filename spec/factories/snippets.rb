@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :snippet do
-    sequence(:name) { |n| "name_#{n}" }
-    sequence(:text) { |n| "text_#{n}" }
+    sequence(:name) { |n| "snippet_name_#{n}" }
+    sequence(:text) { |n| "snippet_text_#{n}" }
 
     user
   end

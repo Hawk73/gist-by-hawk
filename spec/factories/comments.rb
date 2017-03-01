@@ -1,8 +1,9 @@
 FactoryGirl.define do
   factory :comment do
-    user_id 1
-    snippet_id 1
-    text "MyText"
+    sequence(:text) { |n| "comment_text_#{n}" }
+
+    snippet
+    user
   end
 end
 

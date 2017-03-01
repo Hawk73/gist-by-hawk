@@ -23,15 +23,37 @@ class SnippetsController < ApplicationController
   end
 
   def show
-    @snippet = Snippet.find(params[:id])
+    @snippet = retrieve_snippet
+    @comment = @snippet.comments.new
   end
 
   def destroy
+  end
+
+  def add_comment
+    @snippet = retrieve_snippet
+    @comment = @snippet.comments.new(comment_params)
+    @comment.user = current_user
+
+    if @comment.save
+      flash[:notice] = 'Comment has been added successfully.'
+      redirect_to(@snippet)
+    else
+      render('show')
+    end
   end
 
   private
 
   def snippet_params
     params.require(:snippet).permit(:name, :text, :settings)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:text)
+  end
+
+  def retrieve_snippet
+    Snippet.find(params[:id])
   end
 end

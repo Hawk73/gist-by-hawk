@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :snippets do
-
+    member do
+      post :add_comment
+    end
   end
 end

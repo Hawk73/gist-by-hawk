@@ -32,14 +32,17 @@ RSpec.feature 'Snippets', type: :feature do
   feature 'Viewing snippet' do
     given!(:snippet) { create(:snippet, user: user) }
 
-    background do
-      sign_in(user)
-      visit "/snippets/#{snippet.id}"
-    end
+    background { sign_in(user) }
 
     scenario 'Viewing exists snippet' do
-      expect(page).to have_content(snippet.name)
-      expect(page).to have_content(snippet.text)
+      visit "/snippets/#{snippet.id}"
+      expect_have_snippet(snippet)
+    end
+
+    scenario 'Viewing exists snippet with comments' do
+      comments = create_list(:comment, 3, snippet: snippet)
+      visit "/snippets/#{snippet.id}"
+      expect_have_snippet_with_comments(snippet, comments)
     end
   end
 end
