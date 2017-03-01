@@ -2,6 +2,7 @@ class SnippetsController < ApplicationController
   prepend_before_filter :require_login!
 
   def index
+    # TODO: add pagination
     @snippets = Snippet.all
   end
 
@@ -22,6 +23,7 @@ class SnippetsController < ApplicationController
   end
 
   def show
+    @snippet = Snippet.find(params[:id])
   end
 
   def destroy

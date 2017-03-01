@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :snippets
-  devise_for :users, path: 'auth', controllers: { sessions: 'users/sessions' }
+  devise_for :users, path: 'auth', controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   root 'home#index'
 

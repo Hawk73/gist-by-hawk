@@ -1,5 +1,4 @@
-h2
-  | Snippets
+- @title = "Snippets"
 
 .table-responsive
   table.table.table-striped
@@ -7,13 +6,13 @@ h2
       tr
         th #
         th Name
-        th User ID
+        th User
     tbody
       - @snippets.each do |snippet|
         tr
           td
             = snippet.id
           td
-            = snippet.name
+            = link_to snippet.name, snippet_path(snippet)
           td
-            = snippet.user.id
+            = snippet.user.email

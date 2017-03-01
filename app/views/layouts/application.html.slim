@@ -11,4 +11,11 @@ html
 
     .jumbotron
       = render "layouts/notices"
+      .container
+        h1.display-3
+          | #{@title || "Gist"}
+
+    .container
       = yield
+
+    / TODO: add breadcrumbs

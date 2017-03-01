@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Auth', type: :feature do
+RSpec.feature 'Auth', type: :feature do
   feature 'Signing in' do
     given!(:user) { create(:user, password: password) }
     given(:password) { 'password' }

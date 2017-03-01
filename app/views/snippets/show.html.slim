@@ -1,2 +1,8 @@
-h2
-  | View snippet
+- @title = "View snippet"
+
+.panel.panel-default
+  .panel-heading
+    h3.panel-title = "#{@snippet.name}"
+  .panel-body
+    pre
+      | #{@snippet.text}

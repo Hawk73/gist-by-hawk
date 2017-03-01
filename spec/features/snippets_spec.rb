@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe 'Snippets', type: :feature do
+RSpec.feature 'Snippets', type: :feature do
+  given(:user) { create(:user) }
+
   feature 'Creating snippet' do
-    given(:user) { create(:user) }
     given(:snippet) { build(:snippet) }
 
     background do
@@ -25,6 +26,20 @@ RSpec.describe 'Snippets', type: :feature do
 
       expect(page).not_to have_content('Snippet has been created successfully.')
       expect(page).to have_content("can't be blank")
+    end
+  end
+
+  feature 'Viewing snippet' do
+    given!(:snippet) { create(:snippet, user: user) }
+
+    background do
+      sign_in(user)
+      visit "/snippets/#{snippet.id}"
+    end
+
+    scenario 'Viewing snippet exists snippet' do
+      expect(page).to have_content(snippet.name)
+      expect(page).to have_content(snippet.text)
     end
   end
 end
