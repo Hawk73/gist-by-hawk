@@ -2,6 +2,8 @@ class Snippet < ApplicationRecord
   belongs_to :user
   validates_presence_of :user
 
+  has_many :comments, dependent: :destroy
+
   validates :name, presence: { allow_blank: false }, uniqueness: true
 end
 
