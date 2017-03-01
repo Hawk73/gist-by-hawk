@@ -37,7 +37,7 @@ RSpec.feature 'Snippets', type: :feature do
       visit "/snippets/#{snippet.id}"
     end
 
-    scenario 'Viewing snippet exists snippet' do
+    scenario 'Viewing exists snippet' do
       expect(page).to have_content(snippet.name)
       expect(page).to have_content(snippet.text)
     end
